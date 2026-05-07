@@ -1,22 +1,23 @@
 # Day 1 — Python Basics
 
-## What I learned
-- List comprehension for filtering data
-- lambda functions for quick transformations
-- map and filter for functional-style pipelines
+## 📌 What I learned
 
-## Task 1
-Processed transaction data:
-- removed negative values
-- applied tax (1.2)
-- filtered values > 100
+* List comprehensions
+* Lambda functions
+* Built-in functions: `map`, `filter`, `zip`
 
-## Task 2
-Processed orders:
-- removed invalid values (<= 0)
-- applied discount (0.9)
-- filtered values > 100
+## 🧠 Key concepts
 
-## Key takeaway
-Data processing is a pipeline:
-filter → transform → filter
+* List comprehension is a concise way to transform lists
+* Lambda functions are small anonymous functions
+* `map()` applies a function to each element
+* `filter()` selects elements based on a condition
+
+## ⚠️ Challenges
+
+* Understanding when to use list comprehension vs map/filter
+* Writing readable lambda functions
+
+## ✅ Conclusion
+
+Learned how to write more concise and efficient Python code using functional tools.
