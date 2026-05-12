@@ -11,11 +11,7 @@ df = pd.DataFrame(orders)
 result = df[(df['amount'] > 100) & (df['status'] == 'paid')]
 print(result)
 
-# result_2 = df[(df['user'])]
-# print(result_2)
 
-# result_2 = result['user']
-# print(result_2)
 result_2 = df[(df['amount'] > 100) & (df['status'] == 'paid')]['user']
 print(result_2)
 

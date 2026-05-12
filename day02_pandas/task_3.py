@@ -7,21 +7,21 @@ orders = {
 
 df = pd.DataFrame(orders)
 
-filter_amount = (df['amount'].notna()) & (
-    df['amount'] >= 0) & (df['status'] == 'paid')
+# filter_amount = (df['amount'].notna()) & (
+#     df['amount'] >= 0) & (df['status'] == 'paid')
 
-group_by_user_paid = df[filter_amount].groupby('user')['amount'].sum()
+# group_by_user_paid = df[filter_amount].groupby('user')['amount'].sum()
 
-descending_sort = group_by_user_paid.sort_values(ascending=False)
-print(descending_sort)
+# descending_sort = group_by_user_paid.sort_values(ascending=False)
+# print(descending_sort)
 
-# result = df[
-#     (df['amount'].notna()) &
-#     (df['amount'] >= 0) &
-#     (df['status'] == 'paid')
-# ]\
-#     .groupby('user')['amount']\
-#     .sum()\
-#     .sort_values(ascending=False)
+result = df[
+    (df['amount'].notna()) &
+    (df['amount'] >= 0) &
+    (df['status'] == 'paid')
+]\
+    .groupby('user')['amount']\
+    .sum()\
+    .sort_values(ascending=False)
 
-# print(result)
+print(result)
