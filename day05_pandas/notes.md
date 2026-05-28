@@ -2,112 +2,112 @@
 
 ## 🔥 Absolute day vs Relative day
 
-❌ Ошибка новичка:
+❌ Beginner mistake:
 
-считать retention по абсолютным дням:
+calculating retention using absolute days:
 
 df_pivot.div(df_pivot[1], axis=0)
 
-Проблема:
-работает только для первой когорты
+Problem:
+works only for the first cohort
 
 ---
 
-✅ Правильный подход:
+✅ Correct approach:
 
 df['day_number'] = df['day'] - df['cohort']
 
-Теперь:
+Now:
 
-- day_number = 0 → первый день  
-- day_number = 1 → следующий день  
-
----
-
-## 🧠 Почему это важно
-
-Каждая когорта начинает в разный день:
-
-- cohort 1 → старт в day 1  
-- cohort 2 → старт в day 2  
-- cohort 3 → старт в day 3  
-
-👉 нельзя использовать общий "день 1"
+- day_number = 0 → first day  
+- day_number = 1 → next day  
 
 ---
 
-## 🔥 Broadcasting (ключевая идея)
+## 🧠 Why this matters
+
+Each cohort starts on a different day:
+
+- cohort 1 → starts at day 1  
+- cohort 2 → starts at day 2  
+- cohort 3 → starts at day 3  
+
+👉 you cannot use a global "day 1"
+
+---
+
+## 🔥 Broadcasting (key idea)
 
 df_pivot.div(df_pivot[0], axis=0)
 
-Pandas делает:
+Pandas does:
 
-- берёт колонку day_number = 0  
-- сопоставляет по index (cohort)  
-- делит каждую строку на своё значение  
+- takes column day_number = 0  
+- aligns by index (cohort)  
+- divides each row by its own value  
 
 ---
 
-## ⚡ Что реально происходит
+## ⚡ What actually happens
 
 cohort 1: [2, 1, 1] ÷ 2  
 cohort 2: [2, 2] ÷ 2  
 
-👉 каждая строка нормализуется отдельно
+👉 each row is normalized independently
 
 ---
 
-## 📊 Интерпретация retention
+## 📊 Retention interpretation
 
-- 1.0 → все пользователи вернулись  
-- 0.5 → вернулась половина  
-- NaN → данных нет (ещё не наступил этот день)  
+- 1.0 → all users returned  
+- 0.5 → half of users returned  
+- NaN → no data yet (day hasn't occurred)  
 
 ---
 
 ## 💰 Users vs Revenue
 
 Users retention:
-→ сколько людей осталось  
+→ how many users stayed  
 
 Revenue retention:
-→ сколько денег осталось  
+→ how much revenue stayed  
 
 ---
 
-## 🔥 ВАЖНО
+## 🔥 IMPORTANT
 
-Users ↓ не значит Revenue ↓  
+Users ↓ does not mean Revenue ↓  
 
-👉 меньше пользователей может приносить больше денег  
+👉 fewer users can generate more revenue  
 
 ---
 
 ## 🧠 Product thinking
 
-Retention отвечает на вопрос:
+Retention answers:
 
-👉 "возвращаются ли пользователи?"
+👉 "Do users come back?"
 
-Revenue retention:
+Revenue retention answers:
 
-👉 "растёт ли ценность пользователей?"
-
----
-
-## ⚠️ Частые ошибки
-
-- считать retention по абсолютным дням ❌  
-- не использовать day_number ❌  
-- путать NaN и 0 ❌  
-- не делать pivot ❌  
+👉 "Is user value growing?"
 
 ---
 
-## 🎯 Итоговая логика
+## ⚠️ Common mistakes
 
-cohort → когда пользователь пришёл  
-day_number → сколько времени прошло  
-retention → кто остался  
+- using absolute days for retention ❌  
+- not using day_number ❌  
+- confusing NaN with 0 ❌  
+- skipping pivot ❌  
+
+---
+
+## 🎯 Final logic
+
+cohort → when user joined  
+day_number → time since joining  
+retention → who stayed  
 
 ---
